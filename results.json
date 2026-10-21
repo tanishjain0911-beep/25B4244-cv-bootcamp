@@ -1,0 +1,38 @@
+{
+  "name": "Tanish Jain",
+  "roll_no": "25B4244",
+  "seed": 42,
+  "training_setup": {
+    "optimizer": "SGD (momentum=0.9, weight_decay=5e-4, learning_rate=0.1)",
+    "learning_rate_schedule": "CosineAnnealingLR (T_max=60)",
+    "batch_size": 128,
+    "epochs": 60,
+    "augmentation": "Random crop with padding 4 and random horizontal flip",
+    "gpu_used": "Tesla T4"
+  },
+  "task1": {
+    "noise_rate": 40.24,
+    "val_acc_noisy_labels__clean_ref_model": 59.06,
+    "val_acc_noisy_labels__noisy_ce_model": 50.10
+  },
+  "task2": {
+    "memorization_start_epoch": 44,
+    "early_stop_epoch": 35,
+    "val_acc_noisy_labels_at_early_stop": 55.50
+  },
+  "task3": {
+    "method": "Five-fold out-of-fold score: 1 - probability assigned to the noisy label"
+  },
+  "task4": {
+    "methods": [
+      {"name": "Label Smoothing", "file": "t4_label_smoothing.csv", "val_acc_noisy_labels": 55.10},
+      {"name": "Filtering", "file": "t4_filtering.csv", "val_acc_noisy_labels": 54.36},
+      {"name": "Co-Teaching", "file": "t4_coteaching.csv", "val_acc_noisy_labels": 56.22}
+    ],
+    "best_method": "Co-Teaching"
+  },
+  "task5": {
+    "val_acc_synthetic_labels__baseline": 49.84,
+    "val_acc_synthetic_labels__best_method": 49.26
+  }
+}
